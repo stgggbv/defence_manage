@@ -32,54 +32,8 @@ class DefenceController extends BaseController{
     }
     
     public function sorting_action(){
-        switch ($this->action) {
-            case "gard":
-                $gard=1;
-                if(isset($_COOKIE['gard'])){
-                    $gard=$_COOKIE['gard'];
-                    $gard++;
-                }
-                setcookie("gard",$gard, time()+60*120);
-                $this->defence = 'gard';
-                break;
-            case "backstep":
-                $backstep=1;
-                if(isset($_COOKIE['backstep'])){
-                    $backstep=$_COOKIE['backstep'];
-                    $backstep++;
-                }
-                setcookie("backstep",$backstep, time()+60*120);
-                $this->defence = 'backstep';
-                break;
-            case "delcookie":
-                print_r($_COOKIE);
-                foreach ($_COOKIE as $key => $value) {
-                      print $key;
-                      print $value;
-                    setcookie($key, '', time()-1000);
-                }
-                break;
-            case "gardnodamage":
-                $gardnodamage=1;
-                if(isset($_COOKIE['gardnodamage'])){
-                    $gardnodamage=$_COOKIE['gardnodamage'];
-                    $gardnodamage++;
-                }
-                setcookie("gardnodamage",$gardnodamage, time()+60*120);
-                break;
-                
-            case "gardbigdamage":
-                $gardbigdamage=1;
-                if(isset($_COOKIE['gardbigdamage'])){
-                    $gardbigdamage=$_COOKIE['gardbigdamage'];
-                    $gardbigdamage++;
-                }
-                setcookie("gardbigdamage",$gardbigdamage, time()+60*120);
-                break;
-                
-            default:
-                break;
-        }
+        $sorting_action=new SetCookie;
+        $sorting_action->set_cookie();
     }
   
     
@@ -115,10 +69,17 @@ class DefenceController extends BaseController{
 
 //「防御した結果の入力画面」から遷移した場合、ポップアップを表示する。
     public function PopUp() {
-        $this->view->assign('popup', false);
         
-        if(isset($_GET['type']) && $_GET['type']='defence'){
+        if($this->type=='defence'  && $this->action!='delcookie'){
             $this->view->assign('popup', true);
+        }else{
+            $this->view->assign('popup', false);
+        }
+        
+        if ($this->action=='delcookie') {
+            $this->view->assign('clear', true);
+        }else{
+            $this->view->assign('clear', false);
         }
     }
 }

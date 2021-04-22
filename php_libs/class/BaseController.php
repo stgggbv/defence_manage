@@ -13,7 +13,6 @@
 class BaseController {
     protected $type;
     protected $action;
-    protected $defence;
     protected $file;
     protected $view;
     protected $title;
@@ -50,7 +49,7 @@ class BaseController {
 
         
         $this->view->assign('title', $this->title);
-        $this->view->assign('defence', $this->defence);
+        $this->view->assign('action', $this->action);
 
         $this->view->display($this->file);
 

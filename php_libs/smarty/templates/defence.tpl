@@ -8,8 +8,9 @@
 <hr>
 <strong>{$title}</strong>
 <hr>
-    {if ($popup)}<pre>データを保存しました。<br>
-    続けて入力するか、結果を出力してください。</pre>{/if}
+    {if ($popup)}データを保存しました。<br>
+    続けて入力するか、結果を出力してください。{/if}
+    {if ($clear)}データをクリアしました。{/if}
           <br>
           <br>
 	        <a href="{$SCRIPT_NAME}?type=result&action=gard">ガード</a>

@@ -23,9 +23,7 @@
           <br>
           <br>
           <br>
-                <a href="{$SCRIPT_NAME}?type=defence&action=delcookie">データをクリア</a>
-                <br>
-    </table>
+                <a href="{$SCRIPT_NAME}?type=defence&action=delcookie">データクリア</a>
 </div>
 </body>
 </html>

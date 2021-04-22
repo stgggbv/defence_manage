@@ -13,17 +13,49 @@
  */
 class SetCookie extends BaseController {
     
-     public function gard_cookie()
-    {
-         $gard=[];
-         setcookie("gard",$gard,time()+60);
-    }
-    
-        public function screen_login()
-    {
-        $this->title = 'ログイン画面';
-        $this->next_type = 'authenticate';
-        $this->file = "result.tpl";
-        $this->view_display();
+     public function set_cookie(){
+         switch ($this->action) {
+            case "gard":
+                $gard=1;
+                if(isset($_COOKIE['gard'])){
+                    $gard=$_COOKIE['gard'];
+                    $gard++;
+                }
+                setcookie("gard",$gard, time()+60*120);
+                break;
+            case "backstep":
+                $backstep=1;
+                if(isset($_COOKIE['backstep'])){
+                    $backstep=$_COOKIE['backstep'];
+                    $backstep++;
+                }
+                setcookie("backstep",$backstep, time()+60*120);
+                break;
+            case "delcookie":
+                foreach ($_COOKIE as $key => $value) {
+                    setcookie($key, '', time()-1000);
+                }
+                break;
+            case "gardnodamage":
+                $gardnodamage=1;
+                if(isset($_COOKIE['gardnodamage'])){
+                    $gardnodamage=$_COOKIE['gardnodamage'];
+                    $gardnodamage++;
+                }
+                setcookie("gardnodamage",$gardnodamage, time()+60*120);
+                break;
+                
+            case "gardbigdamage":
+                $gardbigdamage=1;
+                if(isset($_COOKIE['gardbigdamage'])){
+                    $gardbigdamage=$_COOKIE['gardbigdamage'];
+                    $gardbigdamage++;
+                }
+                setcookie("gardbigdamage",$gardbigdamage, time()+60*120);
+                break;
+                
+            default:
+                break;
+        }
     }
 }
