@@ -36,26 +36,33 @@ class SetCookie extends BaseController {
                     setcookie($key, '', time()-1000);
                 }
                 break;
-            case "gardnodamage":
+            case "gard/nodamage":
                 $gardnodamage=1;
-                if(isset($_COOKIE['gardnodamage'])){
-                    $gardnodamage=$_COOKIE['gardnodamage'];
+                if(isset($_COOKIE['gard/nodamage'])){
+                    $gardnodamage=$_COOKIE['gard/nodamage'];
                     $gardnodamage++;
                 }
-                setcookie("gardnodamage",$gardnodamage, time()+60*120);
+                setcookie("gard/nodamage",$gardnodamage, time()+60*120);
                 break;
                 
-            case "gardbigdamage":
+            case "gard/bigdamage":
                 $gardbigdamage=1;
-                if(isset($_COOKIE['gardbigdamage'])){
-                    $gardbigdamage=$_COOKIE['gardbigdamage'];
+                if(isset($_COOKIE['gard/bigdamage'])){
+                    $gardbigdamage=$_COOKIE['gard/bigdamage'];
                     $gardbigdamage++;
                 }
-                setcookie("gardbigdamage",$gardbigdamage, time()+60*120);
+                setcookie("gard/bigdamage",$gardbigdamage, time()+60*120);
                 break;
                 
             default:
                 break;
         }
+    }
+    
+    public function set_cookie_back() {
+                $resetdefence=$this->action;
+                $value=$_COOKIE[$resetdefence];
+                $value--;
+                setcookie($resetdefence,$value, time()+60*120);
     }
 }

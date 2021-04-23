@@ -1,10 +1,5 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of BaseController
  *
@@ -16,7 +11,9 @@ class BaseController {
     protected $file;
     protected $view;
     protected $title;
-    
+    protected $back=false;
+
+
 //  インスタンスが生成された時に最初に実行されるコンストラクタの設定
     public function __construct(){
         // VIEWの準備
@@ -36,6 +33,7 @@ class BaseController {
         // リクエスト変数 typeとactionで動作を決めます。
         if(isset($_REQUEST['type'])){   $this->type   = $_REQUEST['type'];}
         if(isset($_REQUEST['action'])){ $this->action = $_REQUEST['action'];}
+        if(isset($_REQUEST['back'])){ $this->back = $_REQUEST['back'];}
         // 共通の変数
         $this->view->assign('SCRIPT_NAME', _SCRIPT_NAME);
     }
