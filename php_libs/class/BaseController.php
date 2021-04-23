@@ -12,6 +12,8 @@ class BaseController {
     protected $view;
     protected $title;
     protected $back=false;
+    protected $other;
+    protected $hidden;
 
 
 //  インスタンスが生成された時に最初に実行されるコンストラクタの設定
@@ -34,6 +36,8 @@ class BaseController {
         if(isset($_REQUEST['type'])){   $this->type   = $_REQUEST['type'];}
         if(isset($_REQUEST['action'])){ $this->action = $_REQUEST['action'];}
         if(isset($_REQUEST['back'])){ $this->back = $_REQUEST['back'];}
+        if(isset($_REQUEST['other'])){ $this->other = $_REQUEST['other'];}
+        if(isset($_REQUEST['hidden'])){ $this->hidden = $_REQUEST['hidden'];}
         // 共通の変数
         $this->view->assign('SCRIPT_NAME', _SCRIPT_NAME);
     }
@@ -48,7 +52,9 @@ class BaseController {
         
         $this->view->assign('title', $this->title);
         $this->view->assign('action', $this->action);
-
+        $this->view->assign('hidden', $this->other);
+        
+        
         $this->view->display($this->file);
 
     }

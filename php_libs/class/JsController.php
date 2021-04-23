@@ -1,5 +1,10 @@
 <?php
-    $sample =$_COOKIE['gard'];//PHPで配列を生成
+    $sample =$_COOKIE['gard'];
+//foreach ($_COOKIE as $key => $value){
+//    
+//}
+//$smarty->assign('array',$_COOKIE);
+    
 ?>
  
 <script type="text/javascript">

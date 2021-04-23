@@ -12,7 +12,7 @@
 <hr>
    <canvas id="total" height="450" width="600"></canvas>
 
-  <script type="text/javascript" >{$test}</script>
+   <script type="text/javascript" >{$test}</script>
 
    <br>
           <br>

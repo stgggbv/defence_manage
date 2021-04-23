@@ -30,6 +30,15 @@
 	        <a href="{$SCRIPT_NAME}?type=result&action=backstep">バクステ</a>
           <br>
           <br>
+              {if (!$frozen)}
+              <form method="post" action="{$SCRIPT_NAME}">
+                  <input type="text" name="other" maxlength="10" size="16" placeholder="その他" >
+              <input type="submit" value="送信">
+              <input type="hidden" name="type" value="result">
+              </form>
+              {else}
+              <a href="{$SCRIPT_NAME}?type=result&other={$hoge}">{$hoge}</a>
+              {/if}
           <br>
                 <a href="{$SCRIPT_NAME}?type=chart">結果を出力</a>
                 <br>

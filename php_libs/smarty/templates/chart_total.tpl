@@ -7,10 +7,10 @@
          label: "りんご"        // ラベル
       },
       {
-         value: 50,
+         value: 20,
          color: "#41C44E",
          highlight: "#6CD173",
-         label: "メロン"
+         label: "なんでも"
       },
       {
          value: 100,
