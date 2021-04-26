@@ -19,7 +19,7 @@ class SetCookie extends BaseController {
 //        初回のアクセスのみ、クッキーに意味のないデータをセットして、
 //        クッキーを使用可能にする。
         if(empty($result)){
-        $value= 'empty';
+        $value= 0;
         $result='empty';
         setcookie($result,$value,time()+60*120);
         
@@ -52,7 +52,7 @@ class SetCookie extends BaseController {
                 foreach ($_COOKIE as $key => $value) {
                     setcookie($key, '', time()-1000);
                 }
-                $value='empty';
+                $value=0;
                 $result='empty';
                 setcookie($result,$value,time()+60*120);
     } 

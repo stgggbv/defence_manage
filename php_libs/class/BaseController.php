@@ -37,7 +37,7 @@ class BaseController {
         if(isset($_REQUEST['action'])){ $this->action = $_REQUEST['action'];}
         if(isset($_REQUEST['back'])){ $this->back = $_REQUEST['back'];}
         if(isset($_REQUEST['other'])){ $this->other = $_REQUEST['other'];}
-        if(isset($_REQUEST['hidden'])){ $this->hidden = $_REQUEST['hidden'];}
+        if(isset($_REQUEST['hidden'])){ $this->other = $_REQUEST['hidden'];}
         // 共通の変数
         $this->view->assign('SCRIPT_NAME', _SCRIPT_NAME);
     }
@@ -52,6 +52,7 @@ class BaseController {
         
         $this->view->assign('title', $this->title);
         $this->view->assign('action', $this->action);
+//        その他で送られたtxtをhiddenに入れて持ちまわる
         $this->view->assign('hidden', $this->other);
         
         

@@ -51,3 +51,4 @@ require_once(_SMARTY_LIBS_DIR . "Smarty.class.php");
 require_once( _CLASS_DIR      . "BaseController.php");
 require_once( _CLASS_DIR      . "DefenceController.php");
 require_once( _CLASS_DIR      . "SetCookie.php");
+require_once( _CLASS_DIR      . "ChartView.php");

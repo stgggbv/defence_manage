@@ -3,26 +3,27 @@
 <head>
 <title>{$title}</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js" type="text/javascript"></script>
-
+<script type="text/javascript">
+            var total ={$TotalChart};
+            var guard ={$GuardChart};
+            window.onload=function(){$WindowOnloadJsCode};
+</script>
 </head>
 <body>
 <div style="text-align:center;">
 <hr>
 <strong>{$title}</strong>
 <hr>
-   <canvas id="total" height="450" width="600"></canvas>
-
-   <script type="text/javascript" >{$test}</script>
-
+   <canvas id="total" height="300" width="450"></canvas>
+        
    <br>
-          <br>
-	        <a href="{$SCRIPT_NAME}?type=result&action=gard">ガード</a>
-          <br>
-          <br>
-	        <a href="{$SCRIPT_NAME}?type=result&action=backstep">バクステ</a>
-          <br>
-          <br>
-          <br>
+   <br>
+   <br>
+   <canvas id="guard" height="300" width="450"></canvas>
+
+   
+   <br>
+
                 <a href="{$SCRIPT_NAME}?type=defence&action=delcookie">データクリア</a>
 </div>
 </body>

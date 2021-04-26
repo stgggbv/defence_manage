@@ -15,14 +15,15 @@
               <input type="submit" value="防御方法を選びなおす">
               <input type="hidden" name="type" value="defence">
               <input type="hidden" name="action" value="{$action}">
+              <input type="hidden" name="hidden" value="{$hidden}">
               <input type="hidden" name="back" value="true">
           </form>
           <br>
           <br>
-	        <a href="{$SCRIPT_NAME}?type=defence&action={$other}{$action}/nodamage&hidden={$hidden}">ノーダメ</a>
+	        <a href="{$SCRIPT_NAME}?type=defence&action={$action}/nodamage&hidden={$hidden}">ノーダメ</a>
           <br>
           <br>
-	        <a href="{$SCRIPT_NAME}?type=defence&action={$other}{$action}/bigdamage&hidden={$hidden}">大ダメ</a>
+	        <a href="{$SCRIPT_NAME}?type=defence&action={$action}/bigdamage&hidden={$hidden}">大ダメ</a>
           <br>
           <br>
           <br>

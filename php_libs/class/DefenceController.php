@@ -23,10 +23,12 @@ class DefenceController extends BaseController{
                 $this->screen_chart();
                 break;
             case "defence":
+//                「その他」が送信されるまではテキストフォームを表示する。
                 $this->frozen_other_off();
-                if(preg_match("/other.*/", $this->action)){
+//                「その他」に一度でも入力があればURL化する。
+                if(preg_match("/.+/", $this->other)){
                     $this->frozen_other_on();
-                    $this->view->assign('hoge', $this->hidden);
+                    $this->view->assign('hoge', $this->other);
                 }
                 $this->screen_top();
                 break;
@@ -49,13 +51,12 @@ class DefenceController extends BaseController{
     public function sorting_action(){
         $sorting_action=new SetCookie;
         
-        if(isset($this->other)){
-            $sorting_action->set_cookie_other();
-        }else if($this->back==false && $this->action!='delcookie' && $this->type!='chart'){
-        $sorting_action->set_cookie();
+
+        if($this->back==false && $this->action!='delcookie' && $this->type!='chart'){
+            $sorting_action->set_cookie();
         } else if($this->back==true && $this->action!='delcookie'){
-        $sorting_action->set_cookie_back();
-        $array= explode('/', $this->action);
+            $sorting_action->set_cookie_back();
+            $array= explode('/', $this->action);
                 print_r($array);
                 $this->action=$array[0];
                 print $this->action;
@@ -99,12 +100,21 @@ class DefenceController extends BaseController{
        
         $this->title = '集計結果';
         $this->file = 'chart_export.tpl';   
-        $this->view->assign('array',$_COOKIE);
-        require_once _PHP_LIBS_DIR."/class/JsController.php";
-        $filename=_PHP_LIBS_DIR."/smarty/templates/chart_total.tpl";
-        $chartTotal=file_get_contents($filename);
+        $chart=new ChartView();
+//        $chart->Total_chart();
+//        $this->view->assign('array',$_COOKIE);
+//        require_once _PHP_LIBS_DIR."/class/JsController.php";
+//        require_once "ChartTotalView.php";
+//        $filename=_PHP_LIBS_DIR."/smarty/templates/chart_total.tpl";
+//        $filename=_PHP_LIBS_DIR."/class/ChartTotalView.php";
+//        $chartTotal=file_get_contents($filename);
 //        $this->view->assign('value', 10);
-        $this->view->assign('test', $chartTotal);
+//        $this->view->assign('test', $chartTotal);
+//        $test=json_encode($pieData);
+        $this->view->assign('WindowOnloadJsCode',$chart->WindowOnloadJsCode());
+        $this->view->assign('TotalChart',$chart->Total_Chart());
+        $this->view->assign('GuardChart',$chart->Guard_Chart());
+
         $this->view_display();
     }
 

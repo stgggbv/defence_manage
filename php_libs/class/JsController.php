@@ -1,5 +1,5 @@
 <?php
-    $sample =$_COOKIE['gard'];
+    $sample =$_COOKIE['guard'];
 //foreach ($_COOKIE as $key => $value){
 //    
 //}
