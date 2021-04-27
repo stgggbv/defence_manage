@@ -6,7 +6,7 @@
 <body>
 <div style="text-align:center;">
 <hr>
-<strong>{$action}</strong>
+<strong>結果入力画面</strong>
 <hr>
     {if ($message)}結果を選び直してください。{/if}
           <br>
@@ -20,10 +20,22 @@
           </form>
           <br>
           <br>
-	        <a href="{$SCRIPT_NAME}?type=defence&action={$action}/nodamage&hidden={$hidden}">ノーダメ</a>
+	        <a href="{$SCRIPT_NAME}?type=defence&action={$action}/nodamage&hidden={$hidden}">
+                    ノーダメージ</a>
           <br>
           <br>
-	        <a href="{$SCRIPT_NAME}?type=defence&action={$action}/bigdamage&hidden={$hidden}">大ダメ</a>
+	        <a href="{$SCRIPT_NAME}?type=defence&action={$action}/fataldamage&hidden={$hidden}">
+                    大ダメージ</a>
+          <br>
+          <br>
+	        <a href="{$SCRIPT_NAME}?type=defence&action={$action}/smalldamage&hidden={$hidden}">
+                    小ダメージ</a>
+          <br>
+          <br>
+	        <a href="{$SCRIPT_NAME}?type=defence&action={$action}/smallandsetup&hidden={$hidden}                    ">小ダメージから起き攻めを受けた</a>    
+          <br>
+          <br>
+	        <a href="{$SCRIPT_NAME}?type=defence&action={$action}/fatalandsetup&hidden={$hidden}                    ">大ダメージから起き攻めを受けた</a>        
           <br>
           <br>
           <br>

@@ -28,12 +28,16 @@ class DefenceController extends BaseController{
 //                「その他」に一度でも入力があればURL化する。
                 if(preg_match("/.+/", $this->other)){
                     $this->frozen_other_on();
-                    $this->view->assign('hoge', $this->other);
+                    $this->view->assign('otherText', $this->other);
                 }
                 $this->screen_top();
                 break;
             default:
                 $this->frozen_other_off();
+                if(preg_match("/.+/", $this->other)){
+                    $this->frozen_other_on();
+                    $this->view->assign('otherText', $this->other);
+                }
                 $this->screen_top();
                 break;
         }
@@ -57,9 +61,7 @@ class DefenceController extends BaseController{
         } else if($this->back==true && $this->action!='delcookie'){
             $sorting_action->set_cookie_back();
             $array= explode('/', $this->action);
-                print_r($array);
-                $this->action=$array[0];
-                print $this->action;
+            $this->action=$array[0];
         } else if($this->action=='delcookie'){
             $sorting_action->reset_cookie();
         }
@@ -101,20 +103,20 @@ class DefenceController extends BaseController{
         $this->title = '集計結果';
         $this->file = 'chart_export.tpl';   
         $chart=new ChartView();
-//        $chart->Total_chart();
-//        $this->view->assign('array',$_COOKIE);
-//        require_once _PHP_LIBS_DIR."/class/JsController.php";
-//        require_once "ChartTotalView.php";
-//        $filename=_PHP_LIBS_DIR."/smarty/templates/chart_total.tpl";
-//        $filename=_PHP_LIBS_DIR."/class/ChartTotalView.php";
-//        $chartTotal=file_get_contents($filename);
-//        $this->view->assign('value', 10);
-//        $this->view->assign('test', $chartTotal);
-//        $test=json_encode($pieData);
         $this->view->assign('WindowOnloadJsCode',$chart->WindowOnloadJsCode());
         $this->view->assign('TotalChart',$chart->Total_Chart());
         $this->view->assign('GuardChart',$chart->Guard_Chart());
-
+        $this->view->assign('GrapChart',$chart->Grap_Chart());
+        $this->view->assign('BackstepChart',$chart->Backstep_Chart());
+        $this->view->assign('FastestRampageChart',$chart->FastestRampage_Chart());
+        $this->view->assign('OtherChart',$chart->Other_Chart());
+//        グラフの表示の有無
+        $chart->chart_display();
+        $this->view->assign('guardDisplay',$chart->guardDisplay);
+        $this->view->assign('fastestRampageDisplay',$chart->fastestRampageDisplay);
+        $this->view->assign('grapDisplay',$chart->grapDisplay);
+        $this->view->assign('backstepDisplay',$chart->backstepDisplay);
+        $this->view->assign('otherDisplay',$chart->otherDisplay);
         $this->view_display();
     }
 
