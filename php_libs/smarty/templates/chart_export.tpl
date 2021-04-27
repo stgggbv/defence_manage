@@ -50,7 +50,6 @@
 
               <form method="post" action="{$SCRIPT_NAME}">    
               <input type="submit" value="続けて入力する">
-              {*<input type="hidden" name="type" value="defence">*}
               <input type="hidden" name="hidden" value={$hidden}>
               </form>
               <br>

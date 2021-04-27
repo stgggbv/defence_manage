@@ -12,7 +12,7 @@ class BaseController {
     protected $view;
     protected $title;
     protected $back=false;
-    protected $other;
+    protected $other=false;
     protected $hidden;
 
 
@@ -36,10 +36,14 @@ class BaseController {
         if(isset($_REQUEST['type'])){   $this->type   = $_REQUEST['type'];}
         if(isset($_REQUEST['action'])){ $this->action = $_REQUEST['action'];}
         if(isset($_REQUEST['back'])){ $this->back = $_REQUEST['back'];}
-        if(isset($_REQUEST['other'])){ $this->other=$_REQUEST['other'];}
-        if(isset($_REQUEST['hidden'])){
-            $requestHidden= htmlspecialchars($_REQUEST['hidden'],ENT_QUOTES);
-            $this->other = $requestHidden;}
+        if($this->action!="delcookie"){
+            if(isset($_REQUEST['other'])){
+                $requestOther= htmlspecialchars($_REQUEST['other'],ENT_QUOTES);
+                $this->other = $requestOther;}
+            if(isset($_REQUEST['hidden'])){
+                $requestHidden= htmlspecialchars($_REQUEST['hidden'],ENT_QUOTES);
+                $this->other = $requestHidden;}
+        }
         // 共通の変数
         $this->view->assign('SCRIPT_NAME', _SCRIPT_NAME);
     }

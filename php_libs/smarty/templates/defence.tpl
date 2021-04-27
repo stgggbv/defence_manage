@@ -45,7 +45,7 @@
               <input type="hidden" name="action" value="other">
               </form>
               {else}
-                  ・<a href="{$SCRIPT_NAME}?type=result&action=other&other={$otherText}">{$otherText}                   </a><br>
+                  ・<a href="{$SCRIPT_NAME}?type=result&action=other&hidden={$otherText}">{$otherText}</a><br>
               {/if}
           <br>
               <form method="post" action="{$SCRIPT_NAME}">    
@@ -60,7 +60,6 @@
               <input type="hidden" name="action" value="delcookie">
               </form>
                 <br>
-    </table>
 </div>
     <hr>
     <p>使用方法</p><br>
@@ -74,6 +73,5 @@
     ※cookieを使用できる環境でのみ正常に動作します。<br>
     ※ブラウザの戻るボタンを押すと正常な結果を出力出来ません。<br>
     <hr>
-</div>
 </body>
 </html>

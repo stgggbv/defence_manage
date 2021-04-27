@@ -32,14 +32,6 @@ class SetCookie extends BaseController {
         }
      }
      
-     public function set_cookie_other() {
-        $value=1;
-        if(isset($_COOKIE['other'])){
-        $value=$_COOKIE['other'];
-        $value++;}
-        setcookie('other',$value,time()+60*120);
-        }
-     
 
     public function set_cookie_back() {
                 $resetdefence=$this->action;
@@ -48,9 +40,9 @@ class SetCookie extends BaseController {
                 setcookie($resetdefence,$value, time()+60*120);
     }
     
-      public function  reset_cookie(){
+    public function  reset_cookie(){
                 foreach ($_COOKIE as $key => $value) {
-                    setcookie($key, '', time()-1000);
+                    setcookie($key, $value, time()-1000);
                 }
                 $value=0;
                 $result='empty';

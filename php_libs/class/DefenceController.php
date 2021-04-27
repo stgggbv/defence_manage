@@ -26,7 +26,8 @@ class DefenceController extends BaseController{
 //                「その他」が送信されるまではテキストフォームを表示する。
                 $this->frozen_other_off();
 //                「その他」に一度でも入力があればURL化する。
-                if(preg_match("/.+/", $this->other)){
+//                if(preg_match("/.+/", $this->other)){
+                if($this->other!=false){
                     $this->frozen_other_on();
                     $this->view->assign('otherText', $this->other);
                 }
@@ -87,11 +88,11 @@ class DefenceController extends BaseController{
     {
 //       結果入力画面を表示
         $this->title = '結果入力画面';
-        if(isset($this->other)){
-            $this->view->assign('other', 'other');
-        }else{
-             $this->view->assign('other', '');
-        }
+//        if(isset($this->other)){
+//            $this->view->assign('other', 'other');
+//        }else{
+//             $this->view->assign('other', '');
+//        }
         $this->file = 'result.tpl';
 
         $this->view_display();
